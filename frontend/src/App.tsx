@@ -5,6 +5,7 @@ import CampaignList from "./pages/campaign/campaign-list";
 import CreateCampaign from "./pages/CreateCampaign";
 import Dashboard from "./pages/dashboard";
 import Login from "./pages/Login";
+import Profile from "./pages/profile";
 import Settings from "./pages/settings";
 import TodoList from "./pages/todo/todo-list";
 import UserList from "./pages/users/user-list";
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="/todos" element={<TodoList />} />
         <Route path="/users" element={<UserList />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </>
   );

@@ -13,12 +13,15 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface NavbarProps {
   toggleSidebar: () => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
+  const navigate = useNavigate();
+
   const [notificationAnchorEl, setNotificationAnchorEl] =
     React.useState<null | HTMLElement>(null);
   const [profileAnchorEl, setProfileAnchorEl] =
@@ -36,6 +39,10 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
   };
   const handleProfileClose = () => {
     setProfileAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    navigate("/");
   };
 
   return (
@@ -86,9 +93,9 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
             open={Boolean(profileAnchorEl)}
             onClose={handleProfileClose}
           >
-            <MenuItem onClick={handleProfileClose}>Profile</MenuItem>
-            <MenuItem onClick={handleProfileClose}>Settings</MenuItem>
-            <MenuItem onClick={handleProfileClose}>Logout</MenuItem>
+            <MenuItem onClick={() => navigate("/profile")}>Profile</MenuItem>
+            <MenuItem onClick={() => navigate("/settings")}>Settings</MenuItem>
+            <MenuItem onClick={() => handleLogout()}>Logout</MenuItem>
           </Menu>
         </Box>
       </Toolbar>

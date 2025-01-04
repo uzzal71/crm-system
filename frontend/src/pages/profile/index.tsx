@@ -1,11 +1,11 @@
 import AppLayout from "../../layouts/private-layout/AppLayout";
 
-const Settings = () => {
+const Profile = () => {
   return (
     <AppLayout>
-      <div>Settings</div>
+      <div>Profile</div>
     </AppLayout>
   );
 };
 
-export default Settings;
+export default Profile;
