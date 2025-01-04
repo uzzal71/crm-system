@@ -1,3 +1,4 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import {
   Box,
   Button,
@@ -6,9 +7,40 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
 import PublicLayout from "../layouts/public-layout/PublicLayout";
 
+type FormValues = {
+  email: string;
+  password: string;
+};
+
+const loginFormSchema = yup.object().shape({
+  email: yup.string().email().required("Email is a required field."),
+  password: yup.string().required("Password is a required field."),
+});
+
+const defaultValues = {
+  email: "",
+  password: "",
+  isRemember: true,
+};
+
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>({
+    defaultValues,
+    resolver: yupResolver(loginFormSchema),
+  });
+
+  const onSubmit = ({ email, password }: FormValues) => {
+    console.log(email, password);
+  };
+
   return (
     <PublicLayout>
       <Container
@@ -23,22 +55,31 @@ const Login = () => {
         <Typography variant="h5" align="center" gutterBottom>
           Login
         </Typography>
-        <Box component="form" noValidate autoComplete="off">
+        <Box
+          component="form"
+          onSubmit={handleSubmit(onSubmit)}
+          noValidate
+          autoComplete="off"
+        >
           <TextField
+            error={errors?.email?.message ? true : false}
             fullWidth
             label="Email"
             type="email"
             margin="normal"
             variant="outlined"
-            required
+            helperText={errors?.email?.message}
+            {...register("email")}
           />
           <TextField
+            error={errors?.password?.message ? true : false}
             fullWidth
             label="Password"
             type="password"
             margin="normal"
             variant="outlined"
-            required
+            helperText={errors?.password?.message}
+            {...register("password")}
           />
           <Box sx={{ textAlign: "right", mb: 2 }}>
             <Link href="#" variant="body2" sx={{ textDecoration: "none" }}>
