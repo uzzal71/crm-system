@@ -1,10 +1,10 @@
-import PrivateLayout from "../../layouts/private-layout/PrivateLayout";
+import AppLayout from "../../layouts/private-layout/AppLayout";
 
 const TodoList = () => {
   return (
-    <PrivateLayout>
+    <AppLayout>
       <div>todo-list</div>
-    </PrivateLayout>
+    </AppLayout>
   );
 };
 

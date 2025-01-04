@@ -1,9 +1,9 @@
 import { Box, Card, CardContent, Grid, Typography } from "@mui/material";
-import PrivateLayout from "../../layouts/private-layout/PrivateLayout";
+import AppLayout from "../../layouts/private-layout/AppLayout";
 
 const Dashboard = () => {
   return (
-    <PrivateLayout>
+    <AppLayout>
       <Box sx={{ padding: 3 }}>
         <Typography variant="h5" fontWeight="bolder" gutterBottom>
           Campaign Delivery Metrics
@@ -44,7 +44,7 @@ const Dashboard = () => {
           </Typography>
         </Box>
       </Box>
-    </PrivateLayout>
+    </AppLayout>
   );
 };
 

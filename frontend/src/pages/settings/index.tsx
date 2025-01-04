@@ -1,10 +1,10 @@
-import PrivateLayout from "../../layouts/private-layout/PrivateLayout";
+import AppLayout from "../../layouts/private-layout/AppLayout";
 
 const Settings = () => {
   return (
-    <PrivateLayout>
+    <AppLayout>
       <div>index</div>
-    </PrivateLayout>
+    </AppLayout>
   );
 };
 

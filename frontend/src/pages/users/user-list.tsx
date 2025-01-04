@@ -1,10 +1,10 @@
-import PrivateLayout from "../../layouts/private-layout/PrivateLayout";
+import AppLayout from "../../layouts/private-layout/AppLayout";
 
 const UserList = () => {
   return (
-    <PrivateLayout>
+    <AppLayout>
       <div>user-list</div>
-    </PrivateLayout>
+    </AppLayout>
   );
 };
 

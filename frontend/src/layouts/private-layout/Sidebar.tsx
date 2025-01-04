@@ -1,12 +1,4 @@
 import {
-  Campaign as CampaignIcon,
-  Dashboard as DashboardIcon,
-  Logout as LogoutIcon,
-  Settings as SettingsIcon,
-  FormatListBulleted as TodoIcon,
-  People as UserIcon,
-} from "@mui/icons-material";
-import {
   Box,
   Drawer,
   List,
@@ -16,13 +8,20 @@ import {
   Toolbar,
 } from "@mui/material";
 import React from "react";
+import { NavLink } from "react-router-dom";
+import { MenuItem } from "./AppLayout";
 
 interface SidebarProps {
   isOpen: boolean;
   drawerWidth: number;
+  menuItems: MenuItem[];
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, drawerWidth }) => {
+const Sidebar: React.FC<SidebarProps> = ({
+  isOpen,
+  drawerWidth,
+  menuItems,
+}) => {
   return (
     <Drawer
       variant="persistent"
@@ -38,44 +37,23 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, drawerWidth }) => {
       <Toolbar />
       <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
         <List sx={{ flexGrow: 1 }}>
-          <ListItem>
-            <ListItemIcon>
-              <DashboardIcon />
-            </ListItemIcon>
-            <ListItemText primary="Dashboard" />
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <CampaignIcon />
-            </ListItemIcon>
-            <ListItemText primary="Campaigns" />
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <TodoIcon />
-            </ListItemIcon>
-            <ListItemText primary="Todo" />
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <UserIcon />
-            </ListItemIcon>
-            <ListItemText primary="Users" />
-          </ListItem>
-          <ListItem>
-            <ListItemIcon>
-              <SettingsIcon />
-            </ListItemIcon>
-            <ListItemText primary="Settings" />
-          </ListItem>
-        </List>
-        <List>
-          <ListItem>
-            <ListItemIcon>
-              <LogoutIcon />
-            </ListItemIcon>
-            <ListItemText primary="Logout" />
-          </ListItem>
+          {menuItems.map((item, index) => (
+            <ListItem
+              key={index}
+              component={NavLink}
+              to={item.path}
+              sx={{
+                "&.active": {
+                  backgroundColor: "rgba(0, 0, 0, 0.1)",
+                  "& .MuiListItemIcon-root": { color: "primary.main" },
+                },
+                "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.08)" },
+              }}
+            >
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.label} />
+            </ListItem>
+          ))}
         </List>
       </Box>
     </Drawer>
