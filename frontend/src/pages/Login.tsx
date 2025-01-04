@@ -8,8 +8,11 @@ import {
   Typography,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
+import { useLoginMutation } from "../features/auth/authApiSlice";
+import { setCredentials } from "../features/auth/authSlice";
 import PublicLayout from "../layouts/public-layout/PublicLayout";
 
 type loginType = {
@@ -29,6 +32,8 @@ const defaultValues = {
 
 const Login = () => {
   const navigate = useNavigate();
+  const [login, { isLoading }] = useLoginMutation();
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -39,9 +44,16 @@ const Login = () => {
     resolver: yupResolver(loginFormSchema),
   });
 
-  const onSubmit = ({ email, password }: loginType) => {
-    console.log(email, password);
-    navigate("/dashboard");
+  const onSubmit = async ({ email, password }: loginType) => {
+    try {
+      const { user, accessToken }: any = await login({
+        email,
+        password,
+      }).unwrap();
+      dispatch(setCredentials({ user, accessToken }));
+      navigate("/dashboard");
+    } catch (error: any) {}
+    navigate("/");
   };
 
   return (
