@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import LoadingBar, { LoadingBarRef } from "react-top-loading-bar";
 import CampaignCreate from "./pages/campaign/campaign-create";
-import CampaignList from "./pages/campaign/campaign-list";
+import CampaignList from "./pages/campaign/campaigns";
 import Dashboard from "./pages/dashboard";
 import Login from "./pages/Login";
 import Profile from "./pages/profile";

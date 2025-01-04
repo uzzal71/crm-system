@@ -53,7 +53,7 @@ const Login = () => {
       dispatch(setCredentials({ user, accessToken }));
       navigate("/dashboard");
     } catch (error: any) {}
-    navigate("/");
+    navigate("/dashboard");
   };
 
   return (

@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
 import AppLayout from "../../layouts/private-layout/AppLayout";
 
@@ -67,94 +68,128 @@ const CampaignCreate = () => {
 
   return (
     <AppLayout>
-      <Container
-        maxWidth="sm"
+      <Box
         sx={{
-          mt: 4,
+          display: "flex",
+          flexDirection: "column",
           p: 3,
-          bgcolor: "white",
-          borderRadius: 2,
-          boxShadow: 3,
         }}
       >
-        <Typography variant="h5" gutterBottom align="center">
-          Create Campaign
-        </Typography>
         <Box
-          component="form"
-          onSubmit={handleSubmit(onSubmit)}
-          noValidate
-          autoComplete="off"
-          sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            backgroundColor: "#fff",
+            mb: 3,
+          }}
         >
-          <TextField
-            error={errors?.name?.message ? true : false}
-            label="Campaign Name"
-            variant="outlined"
-            fullWidth
-            helperText={errors?.name?.message}
-            {...register("name")}
-          />
-          <TextField
-            error={errors?.message?.message ? true : false}
-            label="Message Content"
-            variant="outlined"
-            fullWidth
-            helperText={errors?.message?.message}
-            {...register("message")}
-            multiline
-            rows={4}
-          />
-          <TextField
-            error={errors?.type?.message ? true : false}
-            label="Campaign type"
-            variant="outlined"
-            select
-            fullWidth
-            helperText={errors?.type?.message}
-            {...register("type")}
-          >
-            <MenuItem value="email">Email</MenuItem>
-            <MenuItem value="phone">Phone</MenuItem>
-          </TextField>
+          <Typography variant="h5" fontWeight="bold">
+            New Campaign
+          </Typography>
           <Button
             variant="contained"
-            component="label"
-            sx={{
-              textTransform: "none",
-              backgroundColor: "#1976d2",
-              color: "white",
-            }}
+            color="primary"
+            component={Link}
+            to="/campaigns"
           >
-            Upload Recipient List
-            <input
-              type="file"
-              hidden
-              accept=".csv, .xls, .xlsx"
-              {...register("file")}
-              onChange={handleFileChange}
-            />
-          </Button>
-          {errors.file && (
-            <Typography color="error">{errors.file.message}</Typography>
-          )}
-          <TextField
-            error={errors?.scheduleTime?.message ? true : false}
-            label="Schedule Time"
-            type="datetime-local"
-            variant="outlined"
-            fullWidth
-            helperText={errors?.scheduleTime?.message}
-            {...register("scheduleTime")}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-          <Button variant="contained" type="submit" fullWidth sx={{ py: 1.5 }}>
-            Create Campaign
+            Campaigns
           </Button>
         </Box>
-      </Container>
+        <Container
+          maxWidth="sm"
+          sx={{
+            mt: 4,
+            p: 3,
+            bgcolor: "white",
+            borderRadius: 2,
+            boxShadow: 3,
+          }}
+        >
+          <Typography variant="h5" gutterBottom align="center">
+            Create Campaign
+          </Typography>
+          <Box
+            component="form"
+            onSubmit={handleSubmit(onSubmit)}
+            noValidate
+            autoComplete="off"
+            sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+          >
+            <TextField
+              error={errors?.name?.message ? true : false}
+              label="Campaign Name"
+              variant="outlined"
+              fullWidth
+              helperText={errors?.name?.message}
+              {...register("name")}
+            />
+            <TextField
+              error={errors?.message?.message ? true : false}
+              label="Message Content"
+              variant="outlined"
+              fullWidth
+              helperText={errors?.message?.message}
+              {...register("message")}
+              multiline
+              rows={4}
+            />
+            <TextField
+              error={errors?.type?.message ? true : false}
+              label="Campaign type"
+              variant="outlined"
+              select
+              fullWidth
+              helperText={errors?.type?.message}
+              {...register("type")}
+            >
+              <MenuItem value="email">Email</MenuItem>
+              <MenuItem value="phone">Phone</MenuItem>
+            </TextField>
+            <Button
+              variant="contained"
+              component="label"
+              sx={{
+                textTransform: "none",
+                backgroundColor: "#1976d2",
+                color: "white",
+              }}
+            >
+              Upload Recipient List
+              <input
+                type="file"
+                hidden
+                accept=".csv, .xls, .xlsx"
+                {...register("file")}
+                onChange={handleFileChange}
+              />
+            </Button>
+            {errors.file && (
+              <Typography color="error">{errors.file.message}</Typography>
+            )}
+            <TextField
+              error={errors?.scheduleTime?.message ? true : false}
+              label="Schedule Time"
+              type="datetime-local"
+              variant="outlined"
+              fullWidth
+              helperText={errors?.scheduleTime?.message}
+              {...register("scheduleTime")}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+            <Button
+              variant="contained"
+              type="submit"
+              fullWidth
+              sx={{ py: 1.5 }}
+            >
+              Create Campaign
+            </Button>
+          </Box>
+        </Container>
+      </Box>
     </AppLayout>
   );
 };
