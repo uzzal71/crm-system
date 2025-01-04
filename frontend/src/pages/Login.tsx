@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import PublicLayout from "../layouts/public-layout/PublicLayout";
 
@@ -27,6 +28,8 @@ const defaultValues = {
 };
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -38,6 +41,7 @@ const Login = () => {
 
   const onSubmit = ({ email, password }: loginType) => {
     console.log(email, password);
+    navigate("/dashboard");
   };
 
   return (
@@ -51,8 +55,14 @@ const Login = () => {
           p: 3,
         }}
       >
-        <Typography variant="h5" align="center" gutterBottom>
-          Login
+        <Typography
+          variant="h5"
+          align="center"
+          fontWeight="bold"
+          textTransform="uppercase"
+          gutterBottom
+        >
+          CRM Login
         </Typography>
         <Box
           component="form"

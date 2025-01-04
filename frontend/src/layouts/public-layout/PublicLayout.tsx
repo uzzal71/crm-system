@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
 import React from "react";
 import Footer from "./Footer";
-import Header from "./Header";
 
 interface IProps {
   children: React.ReactNode;
@@ -10,7 +9,7 @@ interface IProps {
 const PublicLayout: React.FC<IProps> = ({ children }) => {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      <Header />
+      {/* <Header /> */}
       <Box
         sx={{
           flex: 1,

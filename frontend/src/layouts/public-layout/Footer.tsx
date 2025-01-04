@@ -7,9 +7,11 @@ const Footer = () => {
       sx={{
         textAlign: "center",
         py: 2,
-        bgcolor: "#1976d2",
-        color: "white",
+        bgcolor: "#f9f9f9",
+        color: "#000",
         mt: "auto",
+        fontWeight: "bold",
+        textTransform: "uppercase",
       }}
     >
       CRM Version 1.0.0

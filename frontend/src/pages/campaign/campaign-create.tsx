@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import PublicLayout from "../layouts/public-layout/PublicLayout";
+import AppLayout from "../../layouts/private-layout/AppLayout";
 
 type campaignType = {
   name: string;
@@ -43,7 +43,7 @@ const defaultValues = {
   scheduleTime: "",
 };
 
-const CreateCampaign = () => {
+const CampaignCreate = () => {
   const {
     register,
     handleSubmit,
@@ -66,7 +66,7 @@ const CreateCampaign = () => {
   };
 
   return (
-    <PublicLayout>
+    <AppLayout>
       <Container
         maxWidth="sm"
         sx={{
@@ -155,8 +155,8 @@ const CreateCampaign = () => {
           </Button>
         </Box>
       </Container>
-    </PublicLayout>
+    </AppLayout>
   );
 };
 
-export default CreateCampaign;
+export default CampaignCreate;
