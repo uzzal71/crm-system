@@ -1,6 +1,6 @@
-import PrivateLayout from "../layouts/private-layout/PrivateLayout";
+import PrivateLayout from "../../layouts/private-layout/PrivateLayout";
 
-const Home = () => {
+const Dashboard = () => {
   return (
     <PrivateLayout>
       <div>
@@ -12,4 +12,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Dashboard;
