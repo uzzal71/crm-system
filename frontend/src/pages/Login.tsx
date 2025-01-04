@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import PublicLayout from "../layouts/public-layout/PublicLayout";
 
-type FormValues = {
+type loginType = {
   email: string;
   password: string;
 };
@@ -24,7 +24,6 @@ const loginFormSchema = yup.object().shape({
 const defaultValues = {
   email: "",
   password: "",
-  isRemember: true,
 };
 
 const Login = () => {
@@ -32,12 +31,12 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>({
+  } = useForm<loginType>({
     defaultValues,
     resolver: yupResolver(loginFormSchema),
   });
 
-  const onSubmit = ({ email, password }: FormValues) => {
+  const onSubmit = ({ email, password }: loginType) => {
     console.log(email, password);
   };
 
