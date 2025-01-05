@@ -5,6 +5,7 @@ import {
   InputLabel,
   MenuItem,
   Select,
+  SelectChangeEvent,
   Table,
   TableBody,
   TableContainer,
@@ -26,7 +27,9 @@ const CampaignList = () => {
   const [page, setPage] = useState(1);
   const [rowsPerPage] = useState(10);
   const [searchTerm, setSearchTerm] = useState("");
-  const [campaignType, setCampaignType] = useState("All");
+  const [campaignType, setCampaignType] = useState<"all" | "email" | "phone">(
+    "all"
+  );
 
   const totalCampaigns = 50; // Example total campaigns
   const campaigns = Array.from({ length: rowsPerPage }, (_, i) => ({
@@ -43,10 +46,14 @@ const CampaignList = () => {
     setPage(value);
   };
 
+  const handleChange = (e: SelectChangeEvent<"all" | "email" | "phone">) => {
+    setCampaignType(e.target.value as "all" | "email" | "phone");
+  };
+
   const filteredCampaigns = campaigns.filter(
     (campaign) =>
       campaign.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (campaignType === "All" || campaign.type === campaignType)
+      (campaignType === "all" || campaign.type === campaignType)
   );
 
   return (
@@ -101,6 +108,9 @@ const CampaignList = () => {
             fullWidth
             value={searchTerm}
             sx={{ minWidth: "200px" }}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setSearchTerm(e.target.value)
+            }
           />
           <FormControl variant="outlined" sx={{ minWidth: 200 }}>
             <InputLabel id="campaign-type-label">Campaign Type</InputLabel>
@@ -108,10 +118,11 @@ const CampaignList = () => {
               labelId="campaign-type-label"
               value={campaignType}
               label="Campaign Type"
+              onChange={handleChange}
             >
-              <MenuItem value="All">All</MenuItem>
-              <MenuItem value="Email">Email</MenuItem>
-              <MenuItem value="Phone">Phone</MenuItem>
+              <MenuItem value="all">All</MenuItem>
+              <MenuItem value="email">Email</MenuItem>
+              <MenuItem value="phone">Phone</MenuItem>
             </Select>
           </FormControl>
         </Box>
