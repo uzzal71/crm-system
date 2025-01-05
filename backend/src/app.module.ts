@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
+import { CampaignModule } from './campaign/campaign.module';
 import config from './config/config';
 
 @Module({
@@ -32,6 +33,7 @@ import config from './config/config';
       }),
     }),
     AuthModule,
+    CampaignModule,
   ],
   controllers: [AppController],
   providers: [AppService],
