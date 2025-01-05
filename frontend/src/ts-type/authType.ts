@@ -7,4 +7,5 @@ export type UserType = {
 export interface AuthState {
   user: UserType | null;
   token: string | null;
+  refreshToken: string | null;
 }

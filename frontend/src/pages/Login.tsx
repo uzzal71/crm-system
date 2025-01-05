@@ -10,6 +10,7 @@ import {
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import * as yup from "yup";
 import { useLoginMutation } from "../features/auth/authApiSlice";
 import { setCredentials } from "../features/auth/authSlice";
@@ -32,7 +33,7 @@ const defaultValues = {
 
 const Login = () => {
   const navigate = useNavigate();
-  const [login, { isLoading }] = useLoginMutation();
+  const [login] = useLoginMutation();
   const dispatch = useDispatch();
 
   const {
@@ -46,14 +47,16 @@ const Login = () => {
 
   const onSubmit = async ({ email, password }: loginType) => {
     try {
-      const { user, accessToken }: any = await login({
+      const { user, accessToken, refreshToken } = await login({
         email,
         password,
       }).unwrap();
-      dispatch(setCredentials({ user, accessToken }));
+      dispatch(setCredentials({ user, accessToken, refreshToken }));
+      toast.success("Login successfully");
       navigate("/dashboard");
-    } catch (error: any) {}
-    navigate("/dashboard");
+    } catch (error: any) {
+      toast.error(error.data.message);
+    }
   };
 
   return (

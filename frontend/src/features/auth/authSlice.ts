@@ -4,6 +4,7 @@ import { AuthState, UserType } from "../../ts-type/authType";
 const initialState: AuthState = {
   user: null,
   token: null,
+  refreshToken: null,
 };
 
 const authSlice = createSlice({
@@ -12,15 +13,21 @@ const authSlice = createSlice({
   reducers: {
     setCredentials: (
       state,
-      action: PayloadAction<{ user: UserType; accessToken: string }>
+      action: PayloadAction<{
+        user: UserType;
+        accessToken: string;
+        refreshToken: string;
+      }>
     ) => {
-      const { user, accessToken } = action.payload;
+      const { user, accessToken, refreshToken } = action.payload;
       state.user = user;
       state.token = accessToken;
+      state.refreshToken = refreshToken;
     },
     logout: (state) => {
       state.user = null;
       state.token = null;
+      state.refreshToken = null;
     },
   },
 });

@@ -9,6 +9,8 @@ import Profile from "./pages/profile";
 import Settings from "./pages/settings";
 import TodoList from "./pages/todo/todo-list";
 import UserList from "./pages/users/user-list";
+import RedirectIfAuthenticated from "./RedirectIfAuthenticated";
+import RequireAuth from "./RequireAuth";
 
 const App = () => {
   const ref = useRef<LoadingBarRef>(null);
@@ -29,14 +31,23 @@ const App = () => {
     <>
       <LoadingBar color="#f11946" ref={ref} shadow={true} />
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/campaigns" element={<CampaignList />} />
-        <Route path="/campaign-create" element={<CampaignCreate />} />
-        <Route path="/todos" element={<TodoList />} />
-        <Route path="/users" element={<UserList />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/"
+          element={
+            <RedirectIfAuthenticated>
+              <Login />
+            </RedirectIfAuthenticated>
+          }
+        />
+        <Route element={<RequireAuth />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/campaigns" element={<CampaignList />} />
+          <Route path="/campaign-create" element={<CampaignCreate />} />
+          <Route path="/todos" element={<TodoList />} />
+          <Route path="/users" element={<UserList />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/profile" element={<Profile />} />
+        </Route>
       </Routes>
     </>
   );

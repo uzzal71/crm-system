@@ -13,7 +13,9 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { logout } from "../../features/auth/authSlice";
 
 interface NavbarProps {
   toggleSidebar: () => void;
@@ -21,6 +23,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [notificationAnchorEl, setNotificationAnchorEl] =
     React.useState<null | HTMLElement>(null);
@@ -42,6 +45,8 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
   };
 
   const handleLogout = () => {
+    dispatch(logout());
+    localStorage.clear();
     navigate("/");
   };
 
