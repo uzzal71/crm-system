@@ -27,8 +27,6 @@ import config from './config/config';
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         uri: configService.get<string>('database.connectionString'),
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
       }),
     }),
     AuthModule,
