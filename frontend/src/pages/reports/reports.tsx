@@ -1,5 +1,11 @@
+import AppLayout from "../../layouts/private-layout/AppLayout";
+
 const Reports = () => {
-  return <div>Reports</div>;
+  return (
+    <AppLayout>
+      <div>Reports</div>
+    </AppLayout>
+  );
 };
 
 export default Reports;

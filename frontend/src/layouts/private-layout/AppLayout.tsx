@@ -44,7 +44,7 @@ const AppLayout: React.FC<IProps> = ({ children }) => {
       path: "/reports",
     },
     {
-      label: "Support Ticketing",
+      label: "Support Ticket",
       icon: <FaUserGraduate />,
       path: "/support-ticket",
     },

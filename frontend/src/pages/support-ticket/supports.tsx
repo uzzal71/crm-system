@@ -1,5 +1,11 @@
+import AppLayout from "../../layouts/private-layout/AppLayout";
+
 const Supports = () => {
-  return <div>supports</div>;
+  return (
+    <AppLayout>
+      <div>Supports</div>
+    </AppLayout>
+  );
 };
 
 export default Supports;

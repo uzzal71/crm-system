@@ -1,5 +1,11 @@
+import AppLayout from "../../layouts/private-layout/AppLayout";
+
 const Tasks = () => {
-  return <div>tasks</div>;
+  return (
+    <AppLayout>
+      <div>Tasks</div>
+    </AppLayout>
+  );
 };
 
 export default Tasks;

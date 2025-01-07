@@ -1,5 +1,11 @@
+import AppLayout from "../../layouts/private-layout/AppLayout";
+
 const Leads = () => {
-  return <div>Leads</div>;
+  return (
+    <AppLayout>
+      <div>Leads</div>
+    </AppLayout>
+  );
 };
 
 export default Leads;

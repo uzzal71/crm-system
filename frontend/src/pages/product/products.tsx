@@ -1,5 +1,11 @@
+import AppLayout from "../../layouts/private-layout/AppLayout";
+
 const Products = () => {
-  return <div>Product</div>;
+  return (
+    <AppLayout>
+      <div>Products</div>
+    </AppLayout>
+  );
 };
 
 export default Products;

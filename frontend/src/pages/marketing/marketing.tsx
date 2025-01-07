@@ -1,5 +1,11 @@
+import AppLayout from "../../layouts/private-layout/AppLayout";
+
 const Marketing = () => {
-  return <div>marketing</div>;
+  return (
+    <AppLayout>
+      <div>marketing</div>
+    </AppLayout>
+  );
 };
 
 export default Marketing;
