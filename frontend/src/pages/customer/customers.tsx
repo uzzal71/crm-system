@@ -23,7 +23,7 @@ import { StyledTableRow } from "../../components/ui/table/StyledTableRow";
 import { selectData } from "../../data";
 import AppLayout from "../../layouts/private-layout/AppLayout";
 
-const CampaignList = () => {
+const Customers = () => {
   const [page, setPage] = useState(1);
   const [rowsPerPage] = useState(10);
   const [searchTerm, setSearchTerm] = useState("");
@@ -185,4 +185,4 @@ const CampaignList = () => {
   );
 };
 
-export default CampaignList;
+export default Customers;

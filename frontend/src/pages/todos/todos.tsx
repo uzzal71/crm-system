@@ -1,6 +1,6 @@
 import AppLayout from "../../layouts/private-layout/AppLayout";
 
-const TodoList = () => {
+const Todos = () => {
   return (
     <AppLayout>
       <div>todo-list</div>
@@ -8,4 +8,4 @@ const TodoList = () => {
   );
 };
 
-export default TodoList;
+export default Todos;

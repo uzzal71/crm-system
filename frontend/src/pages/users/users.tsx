@@ -1,6 +1,6 @@
 import AppLayout from "../../layouts/private-layout/AppLayout";
 
-const UserList = () => {
+const Users = () => {
   return (
     <AppLayout>
       <div>user-list</div>
@@ -8,4 +8,4 @@ const UserList = () => {
   );
 };
 
-export default UserList;
+export default Users;
