@@ -1,10 +1,6 @@
 import {
   Box,
   Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
   SelectChangeEvent,
   Table,
   TableBody,
@@ -19,7 +15,6 @@ import { Link } from "react-router-dom";
 import Pagination from "../../components/ui/pagination";
 import SelectMd from "../../components/ui/SelectMd";
 import { StyledTableCell } from "../../components/ui/table/StyledTableCell";
-import { StyledTableRow } from "../../components/ui/table/StyledTableRow";
 import { selectData } from "../../data";
 import AppLayout from "../../layouts/private-layout/AppLayout";
 
@@ -31,14 +26,6 @@ const Customers = () => {
     "all"
   );
 
-  const totalCampaigns = 50; // Example total campaigns
-  const campaigns = Array.from({ length: rowsPerPage }, (_, i) => ({
-    id: i + 1 + (page - 1) * rowsPerPage,
-    name: `Campaign ${i + 1 + (page - 1) * rowsPerPage}`,
-    type: i % 2 === 0 ? "Email" : "Phone",
-    status: i % 2 === 0 ? "Active" : "Inactive",
-  }));
-
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
     value: number
@@ -49,12 +36,6 @@ const Customers = () => {
   const handleChange = (e: SelectChangeEvent<"all" | "email" | "phone">) => {
     setCampaignType(e.target.value as "all" | "email" | "phone");
   };
-
-  const filteredCampaigns = campaigns.filter(
-    (campaign) =>
-      campaign.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (campaignType === "all" || campaign.type === campaignType)
-  );
 
   return (
     <AppLayout>
@@ -75,15 +56,10 @@ const Customers = () => {
           }}
         >
           <Typography variant="h5" fontWeight="bold">
-            Campaigns
+            Customers
           </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            component={Link}
-            to="/campaign-create"
-          >
-            New Campaign
+          <Button variant="contained" color="primary" component={Link} to="#">
+            New Customer
           </Button>
         </Box>
 
@@ -100,10 +76,10 @@ const Customers = () => {
             variant="body1"
             sx={{ width: "150px", fontWeight: "bold" }}
           >
-            Filter By
+            Search By
           </Typography>
           <TextField
-            label="Search Campaigns"
+            label="Search Customer"
             variant="outlined"
             fullWidth
             value={searchTerm}
@@ -112,19 +88,6 @@ const Customers = () => {
               setSearchTerm(e.target.value)
             }
           />
-          <FormControl variant="outlined" sx={{ minWidth: 200 }}>
-            <InputLabel id="campaign-type-label">Campaign Type</InputLabel>
-            <Select
-              labelId="campaign-type-label"
-              value={campaignType}
-              label="Campaign Type"
-              onChange={handleChange}
-            >
-              <MenuItem value="all">All</MenuItem>
-              <MenuItem value="email">Email</MenuItem>
-              <MenuItem value="phone">Phone</MenuItem>
-            </Select>
-          </FormControl>
         </Box>
         <Box
           sx={{
@@ -143,16 +106,7 @@ const Customers = () => {
                   <StyledTableCell>Status</StyledTableCell>
                 </TableRow>
               </TableHead>
-              <TableBody>
-                {filteredCampaigns.map((campaign) => (
-                  <StyledTableRow key={campaign.id}>
-                    <StyledTableCell>{campaign.id}</StyledTableCell>
-                    <StyledTableCell>{campaign.name}</StyledTableCell>
-                    <StyledTableCell>{campaign.type}</StyledTableCell>
-                    <StyledTableCell>{campaign.status}</StyledTableCell>
-                  </StyledTableRow>
-                ))}
-              </TableBody>
+              <TableBody></TableBody>
             </Table>
           </TableContainer>
         </Box>
@@ -174,11 +128,7 @@ const Customers = () => {
               selectedOption={"10"}
             />
           </div>
-          <Pagination
-            count={Math.ceil(totalCampaigns / rowsPerPage)}
-            page={page}
-            changeEvent={handlePageChange}
-          />
+          <Pagination count={0} page={0} changeEvent={handlePageChange} />
         </Box>
       </Box>
     </AppLayout>
