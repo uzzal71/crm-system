@@ -40,7 +40,7 @@ const Dashboard = () => {
 
         <Box sx={{ marginTop: 4 }}>
           <Typography variant="h6" gutterBottom>
-            Campaign Performance
+            Dashboard Visualization
           </Typography>
         </Box>
       </Box>
