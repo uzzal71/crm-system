@@ -6,7 +6,7 @@ const Dashboard = () => {
     <AppLayout>
       <Box sx={{ padding: 3 }}>
         <Typography variant="h5" fontWeight="bolder" gutterBottom>
-          Campaign Delivery Metrics
+          Dashboard
         </Typography>
 
         <Grid container spacing={3}>
