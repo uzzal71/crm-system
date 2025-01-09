@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
+import { CustomersModule } from './customers/customers.module';
 import config from './config/config';
 
 @Module({
@@ -30,6 +31,7 @@ import config from './config/config';
       }),
     }),
     AuthModule,
+    CustomersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
