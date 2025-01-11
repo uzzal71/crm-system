@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { CustomersModule } from './customers/customers.module';
 import { ProductsModule } from './products/products.module';
 import { SalesModule } from './sales/sales.module';
+import { LeadsModule } from './leads/leads.module';
 import config from './config/config';
 
 @Module({
@@ -36,6 +37,7 @@ import config from './config/config';
     CustomersModule,
     ProductsModule,
     SalesModule,
+    LeadsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
