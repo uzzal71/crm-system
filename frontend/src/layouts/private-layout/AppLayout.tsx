@@ -4,7 +4,15 @@ import {
   FormatListBulleted as TodoIcon,
   People as UserIcon,
 } from "@mui/icons-material";
+import {
+  BiPodcast,
+  BiSolidBarChartAlt2,
+  BiSolidLandmark,
+  BiSolidMagnet,
+} from "react-icons/bi";
+import { DiJira } from "react-icons/di";
 import { FaUserGraduate } from "react-icons/fa";
+import { GoGift, GoTable } from "react-icons/go";
 
 import { Box, Toolbar } from "@mui/material";
 import React, { useState } from "react";
@@ -31,26 +39,26 @@ const AppLayout: React.FC<IProps> = ({ children }) => {
     { label: "Customers", icon: <FaUserGraduate />, path: "/customers" },
     {
       label: "Products",
-      icon: <FaUserGraduate />,
+      icon: <GoGift size={20} />,
       path: "/products",
     },
-    { label: "Leads", icon: <FaUserGraduate />, path: "/leads" },
-    { label: "Sales", icon: <FaUserGraduate />, path: "/sales" },
-    { label: "Marketing", icon: <FaUserGraduate />, path: "/marketing" },
+    { label: "Leads", icon: <DiJira size={24} />, path: "/leads" },
+    { label: "Sales", icon: <GoTable size={20} />, path: "/sales" },
+    { label: "Marketing", icon: <BiPodcast size={20} />, path: "/marketing" },
     { label: "Tasks", icon: <TodoIcon />, path: "/tasks" },
     {
       label: "Reports",
-      icon: <FaUserGraduate />,
+      icon: <BiSolidBarChartAlt2 size={20} />,
       path: "/reports",
     },
     {
       label: "Support Ticket",
-      icon: <FaUserGraduate />,
+      icon: <BiSolidMagnet size={20} />,
       path: "/support-ticket",
     },
 
     { label: "Users", icon: <UserIcon />, path: "/users" },
-    { label: "Todos", icon: <TodoIcon />, path: "/todos" },
+    { label: "Todos", icon: <BiSolidLandmark size={20} />, path: "/todos" },
     { label: "Settings", icon: <SettingsIcon />, path: "/settings" },
   ];
 
@@ -59,7 +67,7 @@ const AppLayout: React.FC<IProps> = ({ children }) => {
   };
 
   return (
-    <Box sx={{ display: "flex", height: "100vh" }}>
+    <Box sx={{ display: "flex", height: "100vh", backgroundColor: "#f1f1f1" }}>
       <Navbar toggleSidebar={toggleSidebar} />
       <Sidebar
         isOpen={sidebarOpen}
@@ -76,7 +84,7 @@ const AppLayout: React.FC<IProps> = ({ children }) => {
         }}
       >
         <Toolbar />
-        {children}
+        <div style={{ backgroundColor: "#ffffff" }}>{children}</div>
       </Box>
     </Box>
   );
