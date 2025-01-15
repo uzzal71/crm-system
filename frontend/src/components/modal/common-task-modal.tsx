@@ -1,5 +1,9 @@
 const CommonTaskModal = () => {
-  return <div>common-task-modal</div>;
+  return (
+    <div>
+      <h2>common-task-modal</h2>
+    </div>
+  );
 };
 
 export default CommonTaskModal;
