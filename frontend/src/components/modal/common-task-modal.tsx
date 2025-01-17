@@ -8,6 +8,9 @@ const CommonTaskModal = () => {
         pariatur officia cumque accusantium quaerat dignissimos modi tempore
         commodi rem vel!
       </p>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum, totam.
+      </p>
     </div>
   );
 };
