@@ -11,6 +11,7 @@ const CommonTaskModal = () => {
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum, totam.
       </p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur reprehenderit distinctio doloremque ipsam sint cupiditate facere, dignissimos dicta amet ipsum!</p>
     </div>
   );
 };
