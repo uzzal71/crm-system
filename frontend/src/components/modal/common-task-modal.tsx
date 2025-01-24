@@ -17,7 +17,6 @@ const CommonTaskModal = () => {
       </p>
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis repellat consectetur, tenetur optio temporibus rerum totam quos ut iure. Fugiat dignissimos possimus necessitatibus totam quae tempore molestiae quaerat voluptate est!</p>
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae, maxime? Eveniet similique qui laudantium odio vitae dolorem placeat vel rerum, voluptatibus pariatur ducimus nisi ad fugiat! Labore cupiditate maiores distinctio.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas minus consequatur eveniet nisi cumque facere! Officiis nemo quod dignissimos cum minus, magnam culpa! Vero nesciunt ea consequatur consectetur qui dolores!</p>
     </div>
   );
 };
